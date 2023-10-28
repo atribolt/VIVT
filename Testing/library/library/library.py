@@ -108,6 +108,9 @@ class Library(yaml.YAMLObject):
       self.books[book.udk] = LibraryNode(book, 0, 1)
     self.books[book.udk].available_increment()
 
-  def __str__(self):
+  def catalog_info(self):
     data = self.books.values()
     return tabulate.tabulate(data, ('Книга', 'В наличии (шт)', 'Общее кол-во (шт)'), "rounded_grid")
+
+  def __str__(self):
+    return self.catalog_info()
